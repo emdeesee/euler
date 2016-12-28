@@ -17,12 +17,23 @@
                                       (inc d))))))]
     (step {} 2)))
 
+(defn prime-factorization
+  "Find the prime factorization of n"
+  [n]
+  (letfn [(factor [n primes]
+            (lazy-seq
+             (let [p (first primes)]
+               (cond
+                 (> (* p p) n) (list n)
+                 (zero? (rem n p)) (cons p
+                                         (factor (/ n p) primes))
+                 :else (factor n (next primes))))))]
+    (factor n (gen-primes))))
+
 (defn prime-factors
   "Find the prime factors of n"
   [n]
-  (->> (gen-primes)
-       (take-while #(<= % (math/sqrt n)))
-       (filter #(zero? (rem n %)))))
+  (into #{} (prime-factorization n)))
 
 (defn gcd
   [a b]
