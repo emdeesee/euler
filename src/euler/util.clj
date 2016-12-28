@@ -4,6 +4,9 @@
 (def fib-seq
   (lazy-cat [1 1] (map + (rest fib-seq) fib-seq)))
 
+(def triangular-seq
+  (lazy-cat [1] (map + triangular-seq (drop 2 (range)))))
+
 (defn gen-primes
   "Generate an infinite, lazy sequence of prime numbers"
   []
