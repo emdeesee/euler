@@ -9,5 +9,12 @@
         (recur (collatz-next n) (inc len)))))
 
 (defn solution []
-  (first (apply max-key second
-                (map #(vector % (collatz-len %)) (range 2 1000000)))))
+  (first
+   (reduce
+    (fn [[_ len :as current] n]
+      (let [len' (collatz-len n)]
+        (if (> len' len)
+          (vector n len')
+          current)))
+    (vector 0 0)
+    (range 2 1000000))))
