@@ -1,5 +1,4 @@
-(ns euler.problem-009
-  (:require [clojure.math.numeric-tower :as math]))
+(ns euler.problem-009)
 
 (defn solution
   []
