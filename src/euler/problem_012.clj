@@ -1,13 +1,10 @@
 (ns euler.problem-012
   (:require [euler.util :as util]))
 
-;; This way we don't have to recalculate the prime sequence for each
-;; triangular number.
-(def primes (util/gen-primes))
 
 (defn number-of-divisors [n]
   (->> n
-       (#(util/prime-factorization % primes))
+       util/prime-factorization
        frequencies
        vals
        (map inc)

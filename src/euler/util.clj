@@ -20,9 +20,11 @@
                                       (inc d))))))]
     (step {} 2)))
 
+(def primes-seq (gen-primes))
+
 (defn prime-factorization
   "Find the prime factorization of n"
-  ([n] (prime-factorization n (gen-primes)))
+  ([n] (prime-factorization n primes-seq))
   ([n primes]
    (let [p (first primes)]
      (cond
