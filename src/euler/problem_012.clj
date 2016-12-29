@@ -1,10 +1,9 @@
 (ns euler.problem-012
-  (:require [euler.util :as util]))
-
+  (:require [euler.util :refer [prime-factorization triangular-seq]]))
 
 (defn number-of-divisors [n]
   (->> n
-       util/prime-factorization
+       prime-factorization
        frequencies
        vals
        (map inc)
@@ -12,4 +11,4 @@
 
 (defn solution
   []
-  (first (drop-while #(< (number-of-divisors %) 500) util/triangular-seq)))
+  (first (drop-while #(< (number-of-divisors %) 500) triangular-seq)))
