@@ -3,4 +3,4 @@
 
 (defn solution
   []
-  (reduce lcm (range 1 21)))
+  (apply lcm (range 1 21)))
