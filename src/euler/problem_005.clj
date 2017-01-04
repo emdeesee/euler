@@ -1,6 +1,6 @@
 (ns euler.problem-005
-  (:require [euler.util :refer [lcm]]))
+  (:require [clojure.math.numeric-tower :refer [lcm]]))
 
 (defn solution
   []
-  (apply lcm (range 1 21)))
+  (reduce lcm (range 1 21)))

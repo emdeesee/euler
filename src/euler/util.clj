@@ -39,15 +39,3 @@
   [n]
   (into #{} (prime-factorization n)))
 
-(defn gcd
-  [a b & others]
-  (cond
-    (and (zero? b) (nil? others)) (math/abs a)
-    (zero? b) (recur a (first others) (next others))
-    :else (recur b (rem a b) others)))
-
-(defn lcm
-  [a b & others]
-  (if (nil? others)
-    (/ (math/abs (* a b)) (gcd a b))
-    (recur (lcm a b) (first others) (next others))))
