@@ -39,3 +39,10 @@
   [n]
   (into #{} (prime-factorization n)))
 
+(defn factorial [n]
+  (if (zero? n) 1
+      (reduce *' (range 2 (inc n)))))
+
+(defn bin-coeff [n k]
+  (letfn [(rprod [a b] (reduce *' (range a (inc b))))]
+    (/ (rprod (- n k -1) n) (rprod 1 k))))
